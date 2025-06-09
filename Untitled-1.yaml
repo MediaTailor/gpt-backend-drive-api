@@ -1,0 +1,25 @@
+openapi: 3.0.0
+info:
+  title: Drive API
+  version: 1.0.0
+paths:
+  /list-files:
+    get:
+      summary: Elenco file da Google Drive
+      operationId: listFiles
+      responses:
+        '200':
+          description: Lista dei file
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    mimeType:
+                      type: string
