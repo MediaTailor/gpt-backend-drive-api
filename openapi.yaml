@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: GPT Drive API
+  version: 1.0.0
+
+servers:
+  - url: https://gpt-backend-drive-api.onrender.com
+
+paths:
+  /list-files:
+    get:
+      summary: Elenco dei file nella cartella Google Drive
+      operationId: listFiles
+      responses:
+        "200":
+          description: Lista dei file
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    mimeType:
+                      type: string
+
+  /get-file-content:
+    get:
+      summary: Contenuto del file dato il suo ID
+      operationId: getFileContent
+      parameters:
+        - name: id
+          in: query
+          required: true
+          description: ID del file su Google Drive
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Contenuto del file
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: string
